@@ -51,16 +51,6 @@ export default {
       action: null
     }
   },
-  watch: {
-    memos: {
-      handler (memos) {
-        const parsed = JSON.stringify(memos)
-
-        STORAGE.setItem(STORAGE_KEY, parsed)
-      },
-      deep: true
-    }
-  },
   mounted () {
     if (STORAGE.getItem(STORAGE_KEY)) {
       try {
@@ -90,6 +80,7 @@ export default {
         id: this.newId,
         ...memoProperties
       })
+      this.saveMemos()
 
       this.editMemo(this.newId)
       this.newId++
@@ -102,13 +93,20 @@ export default {
       const index = this.memos.findIndex(memo => memo.id === id)
 
       this.memos.splice(index, 1, { id, ...memoProperties})
+      this.saveMemos()
     },
     destroyMemo (id) {
       const index = this.memos.findIndex(memo => memo.id === id)
 
       this.memos.splice(index, 1)
+      this.saveMemos()
 
       this.action = null
+    },
+    saveMemos () {
+      const parsed = JSON.stringify(this.memos)
+
+      STORAGE.setItem(STORAGE_KEY, parsed)
     }
   }
 }
