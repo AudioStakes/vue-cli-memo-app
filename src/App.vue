@@ -7,7 +7,7 @@
 
     <div class="container">
       <div class="side">
-        <MemoIndex
+        <MemoList
           :memos="memos"
           :current-id="memo.id"
           @edit-memo="editMemo"
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import MemoIndex from './components/MemoIndex.vue'
+import MemoList from './components/MemoList.vue'
 import MemoNew from './components/MemoNew.vue'
 import MemoEdit from './components/MemoEdit.vue'
 
@@ -41,7 +41,7 @@ const STORAGE = window.localStorage
 export default {
   name: 'App',
   components: {
-    MemoIndex, MemoNew, MemoEdit
+    MemoList, MemoNew, MemoEdit
   },
   data () {
     return {

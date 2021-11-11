@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'MemoIndex',
+  name: 'MemoList',
   props: {
     memos: {
       type: Array,
