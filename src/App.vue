@@ -58,14 +58,6 @@ export default {
       } catch (e) {
         STORAGE.removeItem(STORAGE_KEY)
       }
-    } else {
-      this.memos = [1, 2, 3, 4, 5].map(i => {
-        return {
-          id: i,
-          title: `${i}つ目のメモ`,
-          content: `${i}つ目のメモの本文です。`.repeat(5),
-        }
-      })
     }
 
     this.newId = this.memos.length ? Math.max(...this.memos.map(memo => memo.id)) + 1 : 1
