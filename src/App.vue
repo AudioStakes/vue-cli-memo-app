@@ -21,7 +21,9 @@
         />
         <MemoEdit
           v-else-if="action === 'edit'"
-          :memo="memo"
+          :id="memo.id"
+          :title="memo.title"
+          :content="memo.content"
           @update-memo="updateMemo"
           @destroy-memo="destroyMemo"
         />
